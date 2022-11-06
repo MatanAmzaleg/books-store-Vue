@@ -9,7 +9,7 @@ export default {
             <p>Description: {{ book.description }}</p>
             <h4>Page Count: {{ book.pageCount }} {{ pageCount }}</h4>
             <h3>{{publishCondition}}</h3>
-            <h3 :class="priceColor">Price: {{ book.listPrice.amount }} {{book.listPrice.currencyCode}}</h3>
+            <h3 :class="priceColor">Price: {{priceFormat}}</h3>
             <img className="sale" v-if="book.listPrice.isOnSale" src="../../img/sale.png" alt="" />
             <button @click="$emit('close')">Close</button>
         </section>
@@ -22,6 +22,17 @@ export default {
             if (this.book.pageCount > 500) return 'Long reading'
             else if (this.book.pageCount > 200) return 'Decent reading'
             else if (this.book.pageCount < 100) return 'Light reading'
+        },
+        priceFormat(){
+            const options = {
+                style:'currency',
+                currency: this.book.listPrice.currencyCode 
+            }
+            const formatter = new Intl.NumberFormat(
+                this.book.language,
+                options
+            )
+            return formatter.format(this.book.listPrice.amount)
         },
         publishCondition(){
             const date = new Date
