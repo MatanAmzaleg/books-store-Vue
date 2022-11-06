@@ -15,7 +15,7 @@ export default {
         return {
             books: booksService.query(),
             selectedBook: null,
-            filterBy: {},
+            filterBy: {price:200},
         }
     },
     methods: {
@@ -29,7 +29,6 @@ export default {
             this.books.splice(idx, 1)
         },
         setFilter(filterBy){
-            console.log(filterBy);
             this.filterBy = filterBy
         }
     },
