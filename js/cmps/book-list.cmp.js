@@ -21,10 +21,12 @@ export default {
         },
         selected(bookId){
             this.$emit('selected', bookId)
+            this.$router.push(`/books/${bookId}`)
+
         }
     },
     computed: {
-        //compute:{}
+
     },
     components: {
         bookPreview,

@@ -11,9 +11,9 @@ export default {
                 v-model="filterBy.price" 
                 min="0"
                 max="200"
-                value="200"
                 name="" id="" />
                 <span>Max price: {{filterBy.price}}</span>
+                <router-link class="add-book-btn" to="/add">Add new book</router-link>
             </section>
     `,
     data() {

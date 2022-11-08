@@ -7,11 +7,8 @@ export default {
         </section>
     `,
     computed: {
-        getCurrency() {
-            return this.book.listPrice.currencyCode 
-        },
-        imgUrl() {
-            console.log(this.book.thumbnail);
+        imgUrl() { 
+            if(!this.book.thumbnail) return '../img/notFound.jpg'
             return this.book.thumbnail
         },
     },
